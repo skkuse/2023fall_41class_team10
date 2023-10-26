@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Green-Algorithm</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="my.js"></script>
+  </head>
+
+  <body>
+    <div class="TITLE">
+      <p>TITLE</p>
+    </div>
+    <div class="code">
+      <textarea id="code-input"></textarea><br />
+      <button id="btn-code">submit</button>
+    </div>
+    <div class="container">
+      <div class="item1">
+        <div style="text-align: center">
+          <p>SERVER DATA</p>
+        </div>
+        <div class="server-data">
+          <label>CARBON INTENSITY : </label>
+          <div>
+            <select id="region" onchange="updateCountryList()">
+              <option>Select Region</option>
+              <option value="아시아">아시아</option>
+              <option value="유럽">유럽</option>
+              <option value="아프리카">아프리카</option>
+            </select>
+          </div>
+          <div>
+            <select id="country" onchange="selectCountry()"></select>
+          </div>
+        </div>
+        <div class="server-data">
+          <p>RUNTIME :</p>
+        </div>
+        <div class="server-data">
+          <p>POWER DRAW FOR CORES :</p>
+        </div>
+        <div class="server-data">
+          <p>USAGE :</p>
+        </div>
+        <div class="server-data">
+          <p>POWER DRAW FOR MEMORY :</p>
+        </div>
+        <div class="server-data">
+          <label>PUE : &nbsp&nbsp</label>
+          <textarea id="code-input2"></textarea><br />
+          <br />
+          <div>
+            google cloud platform : 1.11<br />
+            AWS : 1.2<br />
+            azure : 1.125<br />
+            unknown : 1.67
+          </div>
+        </div>
+        <div class="server-data">
+          <label>PSF : </label>
+          <select>
+            <option>YES</option>
+            <option>NO</option>
+          </select>
+
+          <script src="java.js"></script>
+        </div>
+      </div>
+      <div class="item2">
+        <div class="analysis-data">
+          <div class="row1">
+            <div id="i1">analysis1</div>
+            <div id="i2">analysis2</div>
+          </div>
+          <div class="row2">
+            <div id="i3">analysis3</div>
+            <div id="i4">analysis4</div>
+            <div id="i5">analysis5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
