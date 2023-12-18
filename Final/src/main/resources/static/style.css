@@ -1,0 +1,306 @@
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  background-color: #e7ffd5;
+}
+.TITLE,
+.code,
+.item1,
+.item2,
+.graph-container{
+  background-color: #d5ebc5;
+  border-color: #d5ebc5;
+  border-radius: 0.5em;
+}
+.TITLE {
+  text-align: center;
+  border-width: 5px;
+  border-style: solid;
+  margin: 10px;
+}
+.TITLE p{
+  font-weight: bold;
+}
+.code {
+  align-items: center;
+  border-width: 5px;
+  border-style: solid;
+  margin: 10px;
+}
+/*#code-input {*/
+/*  box-sizing:border-box;*/
+/*  margin-top: 10px;*/
+/*  width: 100%;*/
+/*  height: 300px;*/
+/*  resize: none;*/
+/*  background-color: #e7ffd5;*/
+/*  border-radius: 0.5em;*/
+/*  border: none;*/
+/*  padding:5px;*/
+/*}*/
+.CodeMirror {
+  background-color: white;
+  box-sizing: border-box;
+  width: 100%;
+  height: 300px;
+  font-size: 13px;
+  color: black;
+  border-radius: 0.5em;
+  border: none;
+  padding:5px;
+  font-weight: bold;
+}
+.CodeMirror-gutter{
+  background-color: white;
+}
+#code-input:focus {
+  outline: none;
+}
+#btn-code {
+  margin-right: 0;
+  color: white;
+  border: 1px solid #85917c;
+  background-color: #85917c;
+  border-radius: 0.25em;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.item1 {
+  border: 5px solid #d5ebc5;
+  flex: 1;
+  align-items: center;
+  margin: 10px;
+}
+#server-title{
+  font-weight: bold;
+}
+.item2 {
+  border: 5px solid #d5ebc5;
+  margin: 10px;
+  flex: 2;
+  text-align: center;
+}
+.server-data {
+  border: 2px solid #e7ffd5;
+  border-radius: 0.5em;
+  margin: 2px;
+  padding-left: 10px;
+  padding-right:10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.analysis-data {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.row1,
+.row2,
+.row3{
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+#i1,
+#i2,
+#i3,
+#i4,
+#i5,
+#i6 {
+  flex: 1;
+}
+.row1 > div,
+.row2 > div,
+.row3 > div{
+  border-radius: 0.5em;
+  border: 2px solid #e7ffd5;
+  margin: 2px;
+}
+.img {
+  margin-top: 10%;
+}
+.imgsize {
+  width: 70%;
+}
+
+.server-data p {
+  font-size: 12px;
+}
+
+.white-box {
+background-color: white;
+width: 100px;
+height: 5px;
+padding: 20px;
+border: 1px solid #ccc;
+}
+.textbox{
+  resize:none;
+  width: 80px;
+  height: 30px;
+  padding-left:5px;
+  background-color: white;
+  border-radius: 0.25em;
+  display:flex;
+  align-items: center;
+}
+/*====================*/
+
+/*------------------------원그래프----------------------*/
+
+.graph-container{
+  background-color: #d5ebc5;
+  border-color: #d5ebc5;
+  border-radius: 0.5em;
+}
+.title-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#tile1{
+  margin-left : 130px;
+}
+#tile2{
+  margin-right : 30px;
+}
+
+.graph-container{
+  text-align: center;
+  justify-content: center;
+  margin:10px;
+  padding:2px;
+}
+.graph-title{
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.chartWrap{
+  position: relative;
+  width: 300px;
+  height: 300px;
+  left: 5%;
+  margin-top:10px;
+  margin-bottom: 10px;
+}
+.chart {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  transition: 0.3s;
+  background:lightgray;
+  display:inline-block;
+}
+.chart:after{
+  content:'';
+  background: #e7ffd5;
+  position: absolute;
+  top:50%; left:50%;
+  width:170px; height:170px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.chart-bar{
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  position: relative;
+}
+
+.chart-total{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width:100%;
+}
+.chart-total span{
+  position: absolute;
+  color:black;
+}
+.chart-total-num{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size:1.3rem;
+  font-weight:bold;
+  color:#333;
+}
+.chart-total-text1{
+  top:-150px;right:-1px;
+}
+.chart-total-text2{
+  top:-150px;right:261px;
+}
+
+.graph-border {
+  border: 2px solid #e7ffd5;
+  border-radius: 0.5em;
+  margin: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+#chart2_1,
+#chart2_2{
+  line-height: 1.2;
+}
+
+
+/*---------------------막대 그래프---------------------*/
+
+.vertical-graph{
+
+}
+/* statistics start */
+.graph{
+  background-color:#ccc;
+  height: 100px;
+  border-radius: 40px;
+  margin:50px;
+}
+section{
+  display:flex;
+  /*   flex-direction:column;   */
+  justify-content:center;
+  height: 400px;
+  transform:rotate(180deg);
+}
+
+.graph {
+  height:300px;
+}
+
+.graph span{
+  display:flex;
+  height:40px;
+  line-height:40px;
+  text-align:right;
+  /*   width: 75%; */
+  /*   background-color:pink; */
+  border-radius: 40px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  color:white;
+  transform:rotate(180deg);
+}
+.graph.stack1 span{
+  background-color:#9986dd;
+  height:0%;
+  animation:stack 2s 1;
+}
+.graph.stack2 span{
+  background-color:#fbb871;
+  height:0%;
+  animation:stack2 2s 1;
+}
+/* statistics end */

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Green-Algorithm</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="stylesheet" href="codemirror-5.65.16/lib/codemirror.css" />
+        <script src="codemirror-5.65.16/lib/codemirror.js"></script>
+        <script src="codemirror-5.65.16/mode/clike/clike.js"></script>
+        <link rel="stylesheet" href="codemirror-5.65.16/theme/dracula.css" />
+        <script src="codemirror-5.65.16/addon/edit/closebrackets.js"></script>
+    </head>
+    <body>
+        <div class="TITLE">
+            <p>Green-Algorithm</p>
+        </div>
+        <div class="code">
+            <textarea id="code-input"></textarea>
+            <button onclick="postData();btnClick()"  id="btn-code">submit</button>
+        </div>
+        <div class="container">
+            <div class="item1">
+                <div style="text-align: center">
+                    <p id="server-title">Server Data</p>
+                </div>
+                <div class="server-data">
+                    <p>Runtime: </p>
+                    <p class="textbox" id="p-runtime"></p>
+                </div>
+                <div class="server-data">
+                    <p>Type of cores: </p>
+                    <p class="textbox" id="p-coreType"></p>
+                </div>
+                <div class="server-data">
+                    <p>CPU Model: </p>
+                    <p class="textbox" id="p-cpuModel"></p>
+                </div>
+                <div class="server-data">
+                    <p>CPU Number of cores: </p>
+                    <p class="textbox" id="p-coreNumber"></p>
+                </div>
+                <div class="server-data">
+                    <p>CPU power: </p>
+                    <p class="textbox" id="p-cpuPower"></p>
+                </div>
+                <div class="server-data">
+                    <p>CPU usage: </p>
+                    <p class="textbox" id="p-cpuUsage"></p>
+                </div>
+                <div class="server-data">
+                    <p>Memory: </p>
+                    <p class="textbox"id="p-memory"></p>
+                </div>
+                <div class="server-data">
+                    <p>Memory power: </p>
+                    <p class="textbox" id="p-memoryPower"></p>
+                </div>
+                <div class="server-data">
+                    <p>PUE: </p>
+                    <p class="textbox" id="p-PUE"></p>
+                </div>
+                <div class="server-data">
+                    <p>PSF: </p>
+                    <p class="textbox" id="p-PSF"></p>
+                </div>
+                <div class="server-data">
+                    <p>Country: </p>
+                    <p class="textbox" id="p-country"></p>
+                </div>
+                <div class="server-data">
+                    <p>OS name: </p>
+                    <p class="textbox" id="p-osName"></p>
+                </div>
+                <div class="server-data">
+                    <p>OS version: </p>
+                    <p class="textbox" id="p-osVersion"></p>
+                </div>
+                <div class="server-data">
+                    <p>Java Version: </p>
+                    <p class="textbox" id="p-javaVersion"></p>
+                </div>
+            </div>
+            <div class="item2">
+                <div class="analysis-data">
+                    <div class="row1">
+                        <div id="i1">
+                            <div class="img">
+                                <img class="imgsize" src="images/co2-1.png" />
+                            </div>
+                            <p id="analysis-img-tag1">0 (gCO2e/kWh)</p>
+                        </div>
+                        <div id="i2">
+                            <div class="img">
+                                <img class="imgsize" src="images/energy-1.png" />
+                            </div>
+                            <p id="analysis-img-tag2">0 (kWh)</p>
+                        </div>
+                    </div>
+                    <div class="row2">
+                        <div id="i3">
+                            <div class="img">
+                                <img class="imgsize" src="images/lightbulb.png" />
+                            </div>
+                            <p id="analysis-img-tag3">0 (hour)</p>
+                        </div>
+                        <div id="i4">
+                            <div class="img">
+                                <img class="imgsize" src="images/tree.png" />
+                            </div>
+                            <p id="analysis-img-tag4">0 (days)</p>
+                        </div>
+                    </div>
+                    <div class="row3">
+                        <div id="i5">
+                            <div class="img">
+                                <img class="imgsize" src="images/car-3.png" />
+                            </div>
+                            <p id="analysis-img-tag5">0 (Km)</p>
+                        </div>
+                        <div id="i6">
+                            <div class="img">
+                                <img class="imgsize" src="images/train.png" />
+                            </div>
+                            <p id="analysis-img-tag6">0 (Km)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="graph-container">
+            <div class="title-container">
+                <p id= "tile1" class="graph-title">Cores VS Memory</p>
+                <p id= "tile2" class="graph-title"> Memory, CPU carbon emission</p>
+            </div>
+            <div class="graph-border">
+                <div class="chartWrap" style=" padding:20px;">
+                    <div class="chart">
+                        <div class="chart-bar" id="chart1" data-deg="0"></div>
+                        <div class="chart-bar" id="chart2" data-deg="360"></div>
+                    </div>
+                </div>
+                <div class = "vertical-graph">
+                    <section>
+                        <div class="graph stack1">
+                            <span id="chart2_2" style="text-align: center">CPU<br>0</span>
+                        </div>
+                        <div class="graph stack2">
+                            <span id="chart2_1" style="text-align: center">Mem<br>0</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <script src="java.js"></script>
+        <script>
+            var codeInput = CodeMirror.fromTextArea(document.getElementById("code-input"), {
+                mode: "text/x-java",
+                //theme: "dracula",
+                lineNumbers: true,
+                autoCloseBrackets: true,
+                fontFamily: "sans-serif"
+            });
+            function postData() {
+                // var codeInput = document.getElementById("code-input");
+                // alert(codeInput.value);
+                // alert(codeInput.getValue());
+                var runtime = document.getElementById("p-runtime");
+                var coreType = document.getElementById("p-coreType");
+                var cpuModel = document.getElementById("p-cpuModel");
+                var coreNumber = document.getElementById("p-coreNumber");
+                var cpuPower = document.getElementById("p-cpuPower");
+                var cpuUsage = document.getElementById("p-cpuUsage");
+                var memory = document.getElementById("p-memory");
+                var memoryPower = document.getElementById("p-memoryPower");
+                var PUE = document.getElementById("p-PUE");
+                var PSF = document.getElementById("p-PSF");
+                var country = document.getElementById("p-country");
+                var osName = document.getElementById("p-osName");
+                var osVersion = document.getElementById("p-osVersion");
+                var javaVersion = document.getElementById("p-javaVersion");
+                var carbonEmissions = document.getElementById("analysis-img-tag1");
+                var energyNeeded = document.getElementById("analysis-img-tag2");
+                var bulb = document.getElementById("analysis-img-tag3");
+                var tree = document.getElementById("analysis-img-tag4");
+                var car = document.getElementById("analysis-img-tag5");
+                var train = document.getElementById("analysis-img-tag6");
+
+                fetch('http://localhost:8080/api', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    // body: JSON.stringify({ key: codeInput.value }),
+                    body: JSON.stringify({ key: codeInput.getValue() }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.runtime_flag=="false"){ //compile fail
+                            swal('Compilation failed',"", "error");
+                            chartDraw2();
+                        }
+                        else if(data.runtime_timeout=="true"){  // time out
+                            swal("Execution timed out.","","error");
+                            chartDraw2();
+                        }
+                        else{   // compile success
+                            console.log(data);
+                            // Update the content of code-input with the received data
+                            runtime.textContent = data.runtime;
+                            coreType.textContent = data.coreType;
+                            cpuModel.textContent = data.cpuModel;
+                            coreNumber.textContent = data.coreNumber;
+                            cpuPower.textContent = data.cpuPower;
+                            cpuUsage.textContent = data.cpuUsage;
+                            memory.textContent = data.memory;
+                            memoryPower.textContent = data.memoryPower;
+                            PUE.textContent = data.PUE;
+                            PSF.textContent = data.PSF;
+                            country.textContent = data.country;
+                            osName.textContent = data.osName;
+                            osVersion.textContent = data.osVersion;
+                            javaVersion.textContent = data.javaVersion;
+                            carbonEmissions.textContent = data.carbonEmissions + " (gCO2e/kWh)";
+                            energyNeeded.textContent = data.energyNeeded + " (kWh)";
+                            bulb.textContent = data.bulb + " (hour)";
+                            tree.textContent = data.tree + " (days)";
+                            car.textContent = data.car + " (Km)";
+                            train.textContent = data.train + " (Km)";
+
+                            // chart1
+                            var cpuPowerNum=parseFloat(data.CE_core);
+                            var memPowerNum=parseFloat(data.CE_memory);
+                            var percent=(cpuPowerNum/(cpuPowerNum+memPowerNum))*360;
+                            _chartBar[0].dataset.deg=percent+"";
+                            chartDraw();
+
+                            var percent_cpu = data.CE_core_per.toString();
+                            var percent_mem = data.CE_memory_per.toString();
+                            var ce_cpu = data.CE_core.toString();
+                            var ce_mem = data.CE_memory.toString();
+
+                            //graph 1 & graph 2 modification
+                            var chart2_1 =document.getElementById("chart2_1");
+                            var val2_1=ce_mem;
+                            chart2_1.style.height = percent_mem+"%";
+                            chart2_1.innerHTML="Mem<br>"+val2_1;
+
+                            var chart2_2 =document.getElementById("chart2_2");
+                            var val2_2=ce_cpu;
+                            chart2_2.style.height = percent_cpu+"%";
+                            chart2_2.innerHTML="CPU<br>"+val2_2;
+
+                        }
+                        // 원상 복구
+                        var btnSubmit=document.getElementById("btn-code");
+                        btnSubmit.style.backgroundColor="#85917c";
+                        btnSubmit.textContent="submit";
+                        btnSubmit.style.pointerEvents="auto";
+
+                        var codeMirrorWrapper = document.querySelector(".CodeMirror");
+                        codeMirrorWrapper.style.border="none";
+                        codeMirrorWrapper.style.padding="5px";
+                        codeMirrorWrapper.style.backgroundColor="white";
+                        var codeMirrorWrapper1 = document.querySelector(".CodeMirror-gutter");
+                        codeMirrorWrapper1.style.backgroundColor="white";
+                        // var textarea=document.getElementById("code-input");
+                        // textarea.style.backgroundColor="#e7ffd5";
+                        // textarea.style.border="none";
+                        // textarea.style.padding="5px";
+                    })
+                    .catch((error) => console.error('Error:', error));
+            }
+        </script>
+    </body>
+</html>
